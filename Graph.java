@@ -99,11 +99,43 @@ public class Graph {
     }
 
     public String mst() {
+        int[] key = new int[this.V()];
+		Integer[] edgeFrom = new Integer[this.V()];
+		boolean[] inQueue = new boolean[this.V()];
 
+		for (int i = 0; i < this.V(); i++) {
+			key[i] = INFINITY;
+			inQueue[i] = true;
+		}
+		key[0] = 0;
+		edgeFrom[0] = null;
 
+		int current = 0;
+		while (containsTrue(inQueue)) {
+			// find the minimum value inQueue
+			for (int i = 0; i < key.length; i++) {
+				if (!inQueue[current]) current = i;
+				if (inQueue[i] && key[i] < key[current]) {
+					current = i;
+				}
+			}
+			System.out.println("Current = " + current + "\t" + Arrays.toString(edgeFrom));
+			inQueue[current] = false;
+			for (Integer v : this.edgeTo(current)) {
+				if (inQueue[v] && weight(current, v) < key[v]) {
+					edgeFrom[v] = current;
+					key[v] = weight(current, v);
+				}
+			}
+		}
+		Graph G = new Graph(this.V());
 
-
-        return "";
+		for (int i = 0; i < G.V(); i++) {
+			if (edgeFrom[i] != null) {
+				G.addEdge(i, edgeFrom[i], key[i]);
+			}
+		}
+		return G.toString();
     }
 
     public String shortestPath(int v) {
