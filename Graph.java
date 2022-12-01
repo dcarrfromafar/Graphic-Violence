@@ -99,7 +99,8 @@ public class Graph {
     }
 
     public String mst() {
-        int[] key = new int[this.V()];
+		final int INFINITY = Integer.MAX_VALUE;
+		int[] key = new int[this.V()];
 		Integer[] edgeFrom = new Integer[this.V()];
 		boolean[] inQueue = new boolean[this.V()];
 
@@ -136,7 +137,14 @@ public class Graph {
 			}
 		}
 		return G.toString();
-    }
+	}
+	private boolean containsTrue(boolean[] arr) {
+		boolean containsTrue = false;
+		for (int i = 0; i < arr.length && !containsTrue; i++) {
+			if (arr[i]) containsTrue = true;
+		}
+		return containsTrue;
+	}
 
     public String shortestPath(int v) {
         BreadthFirstSearch search = new BreadthFirstSearch(this, v);
