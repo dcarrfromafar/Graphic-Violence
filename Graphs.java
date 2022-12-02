@@ -4,12 +4,14 @@ import java.util.Scanner;
 
 public class Graphs {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         String filename = "graphinput.txt";
-        Graph graph = new Graph(filename);
+        Graph graph = null;
         try {
-            //Graph graph = new Graph(filename);
-        } catch (Exception e) {}
+           graph = new Graph(filename);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Scanner in = new Scanner(System.in);
         int choice = 0;
