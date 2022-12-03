@@ -261,4 +261,56 @@ public class Graph {
         }
         return index;
     }
+    
+    public String tsp() {
+		/*
+		int[] vertices = new int[this.V()];
+		for (int i = 0; i < vertices.length; i++) {
+			vertices[i] = i;
+		}
+		Permutations permutation = new Permutations(vertices);
+
+		Integer[] bestRoute = null;
+		int bestDistance = Integer.MAX_VALUE;
+		Integer[] currentRoute = permutation.getCurrentPermutation();
+		while (currentRoute != null) {
+			boolean isValid = true;
+			int currentDistance = 0;
+			for (int i = 0; i < currentRoute.length && isValid; i++) {
+				int a,b;
+				if (i < currentRoute.length-1) {
+					a = i;
+					b = i+1;
+				}
+				else {
+					a = i;
+					b = 0;
+				}
+				try {
+					currentDistance += this.weight(a, b);
+				} catch (NullPointerException e) {
+					isValid = false;
+				}
+
+			}
+
+			if (currentDistance < bestDistance && isValid) {
+				bestRoute = currentRoute;
+				bestDistance = currentDistance;
+			}
+			currentRoute = permutation.getCurrentPermutation();
+		}
+
+		if (bestRoute == null ) return "No path exists";
+		StringBuilder sb = new StringBuilder();
+		sb.append(bestDistance);
+		for (Integer i : bestRoute) {
+			sb.append(i + " -> ");
+		}
+		sb.append(0);
+		return sb.toString();
+		
+		 */
+		return "Method not implemented.";
+	}
 }
