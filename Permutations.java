@@ -1,30 +1,37 @@
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class Permutations {
 
-    Permutations(){
-        
+    private int[] arr;
+
+    Permutations(int[] array) {
+        arr = array;
     }
 
-    static List<Integer> permute(java.util.List<Integer> arr, int k) {
-        for (int i = k; i < arr.size(); i++) {
-            java.util.Collections.swap(arr, i, k);
+    static List<Integer> permute(int[] arr, int k) {
+        for (int i = k; i < arr.length; i++) {
+            arr.swap(i, k);
             permute(arr, k + 1);
-            java.util.Collections.swap(arr, k, i);
+            arr.swap(k, i);
         }
-        if (k == arr.size() - 1) {
-            System.out.println(java.util.Arrays.toString(arr.toArray()));
+        if (k == arr.length- 1) {
+            System.out.println(Arrays.toString(arr));
         }
         return arr;
     }
 
 
+    public void swap(int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+
+
     public static void main(String[] args) {
-        permute(java.util.Arrays.asList(3,4,6,2,1), 0);
+        permute(, 0);
 
     }
 
+}
 }
