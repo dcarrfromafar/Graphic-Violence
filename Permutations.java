@@ -8,14 +8,14 @@ public class Permutations {
         arr = array;
     }
 
-    static List<Integer> permute(int[] arr, int k) {
+    public int[] permute(int k) {
         for (int i = k; i < arr.length; i++) {
-            arr.swap(i, k);
-            permute(arr, k + 1);
-            arr.swap(k, i);
+            swap(i, k);
+            permute(k + 1);
+            //swap(k, i);
         }
         if (k == arr.length- 1) {
-            System.out.println(Arrays.toString(arr));
+            //System.out.println(Arrays.toString(arr));
         }
         return arr;
     }
@@ -29,9 +29,13 @@ public class Permutations {
 
 
     public static void main(String[] args) {
-        permute(, 0);
-
+        int[] r = new int[4];
+        for(int i = 0; i < r.length; ++i){
+            r[i] = i;
+        }
+        Permutations a = new Permutations(r);
+        a.permute(0);
+        System.out.println(Arrays.toString(a.permute(4)));
     }
 
-}
 }
